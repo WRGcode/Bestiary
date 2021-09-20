@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useReducer, useContext } from 'react'
 import { reducer } from './reducer'
-const API_ENDPOINT = `https://www.dnd5eapi.co/api/monsters`;
+const API_ENDPOINT = `https://www.dnd5eapi.co/api/monsters/`;
 
 const initialState = {
     count: '',
@@ -13,6 +13,23 @@ const initialState = {
 
 const AppContext = React.createContext()
 
+export const AppProvider = ({children}) =>{
+    const [state, dispatch] = useReducer(reducer, initialState)
+    const [query, setQuery] = useState('');
+
+
+const fetchResults = async (url) =>{
+    dispatch({type: 'SET_LOADING'});
+    try {
+const response = await fetch(url)
+const data = await response.json()
+dispatch({type: "SET_RESULTS", payload: data})
+    }catch (error) {
+        console.error(error)
+    }
+}
+return AppProvider
+}
 
 
 export const useAppContext = () => {
