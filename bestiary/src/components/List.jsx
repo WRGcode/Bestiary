@@ -3,6 +3,7 @@ import { useAppContext } from '../util/context'
 
 const List = () => {
     const { isLoading, results} = useAppContext()
+    
 
     if (isLoading) {
         return <div className='isloading'><div className='spinner' /></div>
@@ -11,8 +12,8 @@ const List = () => {
         results.map((monsters) =>{
             const {index,name,url} = monsters
             return (
-                <article key={index} className='story'>
-            <h4 className='article-title'>{name}</h4>
+                <article key={index} className='item'>
+            <h4 onClick={url} className='article-title'>{name}</h4>
             <button onClick={url}>Details</button>
         </article>
             )

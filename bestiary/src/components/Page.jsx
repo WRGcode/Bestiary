@@ -3,9 +3,9 @@ const page = () => {
 
     
     return (
-        <div>
+        <main>
             monster page
-        </div>
+        </main>
     )
 }
 

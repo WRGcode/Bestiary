@@ -7,9 +7,8 @@ export const reducer = (state, action) => {
         return {
           ...state,
           loading: false,
-          nbPages: action.payload.nbPages,
           //data.nbpages
-          hits: action.payload.hits,
+          results: action.payload.results,
         };
       }
 
