@@ -8,9 +8,25 @@ export const reducer = (state, action) => {
           ...state,
           loading: false,
           //data.nbpages
-          results: action.payload.results,
+          results: action.payload,
         };
       }
+      case "SET_MONSTER":{
+        return{
+          ...state,
+          loading:false,
+          results:action.payload,
+        }
+      }
+      case "SET_QUERY" :{
+        return {
+          ...state,  
+          query: action.payload
+        }
+
+      }
+      default: 
+      console.error(action.type + " does not exist")
 
 
     }
