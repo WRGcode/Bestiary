@@ -1,80 +1,122 @@
-import React, { useState, useEffect } from 'react'
-import { useAppContext } from '../util/context';
-import { useFetch } from '../util/useFetch';
+import React, { useState, useEffect } from "react";
+import { useAppContext } from "../util/context";
+import { useFetch } from "../util/useFetch";
 
-const Page = () => { 
-  console.log('test page');
+const Page = () => {
+  console.log("test page");
 
   // const{isLoading, query, setQuery, data} = useAppContext()
-  const{data, loading} = useFetch(window.location.pathname)
+  const { data, loading } = useFetch(window.location.pathname);
+  const {
+    index,
+    name,
+    type,
+    subtype,
+    size,
+    alignment,
+    armor_class,
+    hit_points,
+    strength,
+    dexterity,
+    constitution,
+    intelligence,
+    wisdom,
+    charisma,
+    proficiencies = [],
+    senses,
+    languages,
+    damage_vulnerabilities,
+    damage_resistances,
+    damage_immunities,
+    condition_immunities,
+    challenge_rating,
+    xp,
+    special_abilities,
+    actions,
+    legendary_actions,
+  } = data;
+
+  proficiencies.map((proficiency)=>{
+    const{ name } = proficiency
+    return(proficiency)
+    
+
+  })
+
 
   console.log(data);
-  
-  if(loading) {
-    return <div className="loading"></div>
+
+  if (loading) {
+    return <div className="loading"></div>;
   }
-  return ( 
+    
+    return (
+      <main key={index}>
+        {console.log(data)}
+        <div className="creature">
+          <h3>Name: {name}</h3>
+          <h3>Type: {type}</h3>
+          <h3>Subtype: {subtype}</h3>
+          <h3>Size: {size}</h3>
+          <h3>Alignment: {alignment}</h3>
+        </div>
+        <div className="livability">
+          <h3>Armor class = {armor_class}</h3>
+          <h3>Hit points = {hit_points}</h3>
+        </div>
+        <div className="stats">
+          <h3>strength = {strength}</h3>
+          <h3>dexterity = {dexterity}</h3>
+          <h3>constitution = {constitution}</h3>
+          <h3>intelligence = {intelligence}</h3>
+          <h3>wisdom = {wisdom}</h3>
+          <h3>charisma = {charisma}</h3>
+        </div>
+        
+        <div className="skills">
+          <h3>proficiencies</h3>
+          <h4>•{}</h4>
 
-    <main>
-      {console.log(data)}
-      <div className="creature">
-        <h3>name</h3>
-        <h3>type</h3>
-        <h3>subtype</h3>
-        <h3>size</h3>
-        <h3>alignment</h3>
-      </div>
-      <div className="livability">
-        <h3>armor_class</h3>
-        <h3>hit_points</h3>
-      </div>
-      <div className="stats">
-        <h3>strength</h3>
-        <h3>dexterity</h3>
-        <h3>constitution</h3>
-        <h3>intelligence</h3>
-        <h3>wisdom</h3>
-        <h3>charisma</h3>
-      </div>
-      <div className="skills">
-        <h3>proficiency</h3>
-        <h4>name</h4>
+          <h3>senses</h3>
+          <h4>•{}</h4>
 
-        <h3>senses</h3>
-        <h4>name</h4>
+          <h3>Languages</h3>
+          <h4>{languages}</h4>
+        </div>
+        <div className="resilients">
+          <h3>Damage vulnerabilities</h3>
+          <h4>•{damage_vulnerabilities}</h4>
 
-        <h3>languages</h3>
-        <h4>name</h4>
-      </div>
-      <div className="resilients">
-        <h3>damage_vulnerabilities</h3>
-        <h4>name</h4>
+          <h3>Damage resistances</h3>
+          <h4>•{damage_resistances}</h4>
 
-        <h3>damage_resistances</h3>
-        <h4>name</h4>
+          <h3>Damage immunities</h3>
+          <h4>•{damage_immunities}</h4>
 
-        <h3>damage_immunities</h3>
-        <h4>name</h4>
+          <h3>Condition immunities</h3>
+          <h4>•{condition_immunities}</h4>
+        </div>
+        <div className="challenge">
+          <h3>Challenge rating = {challenge_rating}</h3>
+          <h3>Xp = {xp}</h3>
+        </div>
 
-        <h3>condition_immunities</h3>
-        <h4>name</h4>
-      </div>
-      <div className="challenge">
-        <h3>challenge_rating</h3>
-        <h3>xp</h3>
-      </div>
+        <div className="battle">
+          <h3>special_abilities</h3>
+          <h4>•name</h4>
+          <p>desc</p>
 
-      <div className="battle">
-        <h3>special_abilities</h3>
-        <h4>name</h4>
-        <p>desc</p>
+          <h3>actions</h3>
+          <h4>•name</h4>
+          <p>desc</p>
 
-        <h3>actions</h3>
-        <h4>name</h4>
-        <p>desc</p>
-      </div>
-    </main>
-  );
+          <h3>legendary_actions</h3>
+          <h4>•name</h4>
+          <p>desc</p>
+        </div>
+      </main>
+    );
+  
 };
 
 export default Page;
