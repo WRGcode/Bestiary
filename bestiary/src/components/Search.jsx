@@ -1,13 +1,16 @@
-//imrs
+import React, { useState } from 'react'
+import {results} from '../util/context'
+import {data} from './List'
+
 const search = () => {
   console.log("test search");
   return (
     <main>
       <form>
-        <label> name </label>
-        <input type="text" />
-        <label> Type </label>
-        <select>
+        <label> Filter By Name </label>
+        {/* <input type="text" onChange={(e) => data.results.filter(e.target.name)} /> */}
+        {/* <label> Type </label> */}
+        {/* <select>
           <option value="any"> any type</option>
           <option value="aberration"> aberration</option>
           <option value="beast"> beast</option>
@@ -49,10 +52,10 @@ const search = () => {
           <option value="lawful evil"> lawful evil</option>
           <option value="neutral evil"> neutral evil</option>
           <option value="chaotic evil"> chaotic evil</option>
-        </select>
+        </select> */}
       </form>
 
-      <button>Search🔎</button>
+      {/* <button>Search🔎</button> */}
     </main>
   );
 };
